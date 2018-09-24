@@ -1,0 +1,879 @@
+<! DOCTYPE html>
+<html>
+<head>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/bootstrap-theme.min.css" rel="stylesheet">
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<h1><<<<<--------------开始您的bootstrap旅程 <small>Are you ready?</small>-------------->>>>></h1>
+<button class="btn btn-info" onclick="show_or_hide('show')">展开所有</button>&nbsp;<button class="btn btn-info" onclick="show_or_hide('hide')">隐藏所有</button>
+<h3><button class="btn btn-primary" onclick="show_or_hide(1)">show/hide</button><<<------网格Grid------>>></h3>
+<hr />
+<div class="container" id="id_1">
+    <div class="row">
+        <div class="col-xs-4">4</div>
+        <div class="col-xs-4">4</div>
+        <div class="col-xs-4">4</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-8">8</div>
+        <div class="col-xs-4">4</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">6</div>
+        <div class="col-xs-6">6</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1">1</div>
+        <div class="col-xs-1">1</div>
+        <div class="col-xs-1">1</div>
+        <div class="col-xs-1">1</div>
+        <div class="col-xs-1">1</div>
+        <div class="col-xs-1">1</div>
+        <div class="col-xs-1">1</div>
+        <div class="col-xs-1">1</div>
+        <div class="col-xs-1">1</div>
+        <div class="col-xs-1">1</div>
+        <div class="col-xs-1">1</div>
+        <div class="col-xs-1">1</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">12</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">3</div>
+        <div class="col-xs-9">9</div>
+    </div>
+</div>
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(2)">show/hide</button><<<------排版------>>></h3>
+<hr />
+<div style="padding-left:100px" id="id_2">
+    <abbr title="欠我的钱打算什么时候还？">这里有我想对你说的话</abbr><br>
+    <small>我在small标签内</small><br>
+    <strong>我在strong标签内</strong><br>
+    <em>我在em标签内，我是斜体的哦</em><br>
+    <p class="lead">lead类段落</p>
+    <p>普通段落</p>
+    <p class="text-left">向左对齐文本<------------</p>
+    <p class="text-center"><------居中对齐文本------></p>
+    <p class="text-right">------------->向右对齐文本</p>
+    <p class="text-muted">本行内容是减弱的</p>
+    <p class="text-primary">本行内容带有一个 primary class</p>
+    <p class="text-success">本行内容带有一个 success class</p>
+    <p class="text-info">本行内容带有一个 info class</p>
+    <p class="text-warning">本行内容带有一个 warning class</p>
+    <p class="text-danger">本行内容带有一个 danger class</p>
+    
+    <!--<h4>有序列表ol</h4>
+    <ol>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    </ol>
+    <h4>无序列表ul</h4>
+    <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    </ul>
+    <h4>未定义样式列表list-unstyled</h4>
+    <ul class="list-unstyled">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    </ul>
+    <h4>内联列表list-inline</h4>
+    <ul class="list-inline">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    </ul>
+    <h4>定义列表</h4>
+    <dl>
+    <dt>Description 1</dt>
+    <dd>Item 1</dd>
+    <dt>Description 2</dt>
+    <dd>Item 2</dd>
+    </dl>
+    <h4>水平的定义列表</h4>
+    <dl class="dl-horizontal">
+    <dt>Description 1</dt>
+    <dd>Item 1</dd>
+    <dt>Description 2</dt>
+    <dd>Item 2</dd>
+    </dl>-->
+</div>
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(3)">show/hide</button><<<------表格Table------>>></h3>
+<hr />
+<div id="id_3">
+    <button class="btn btn-default" onclick="table_defalut_or_beauty('id_3_1', 'beauty')">美化表格</button>
+    <button class="btn btn-default" onclick="table_defalut_or_beauty('id_3_1', 'default')">还原表格</button>
+    <table class="table" id="id_3_1">
+    <caption>我是表格标题caption</caption>
+    <thead>
+        <tr>
+            <th>省份</th><th>城市</th><th class="danger">学校</th><th>排名</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>北京</td><td>北京</td><td>清华大学</td><td>1</td>
+        </tr>
+        <tr>
+            <td>浙江</td><td>杭州</td><td>浙江大学</td><td>3</td>
+        </tr>
+        <tr >
+            <td>浙江</td><td>宁波</td><td>宁波工程学院</td><td>XX</td>
+        </tr>
+        <tr>
+            <td>浙江</td><td>金华</td><td>浙江师范大学</td><td>YY</td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(4)">show/hide</button><<<------表单Form------>>></h3>
+<hr />
+<div id="id_4" style="padding-left:100px">
+    <form role="form">
+        <div class="form-group">
+            <label for="name">名称</label>
+            <input type="text" class="form-control" id="aname"
+                placeholder="请输入名称">
+        </div>
+        <div class="form-group">
+            <label for="inputfile">文件输入</label>
+            <input type="file" id="inputfile">
+            <p class="help-block">这里是help-block块级帮助文本的实例。</p>
+        </div>
+        <div class="checkbox">
+            <label>
+            <input type="checkbox"> 请打勾
+            </label>
+        </div>
+        <button class="btn btn-default">提交(form内)</button>
+    </form>
+    <hr />
+    <h4>--->form-inline</h4>
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <label class="sr-only" for="name">名称</label>
+            <input type="text" class="form-control" id="name"
+                placeholder="请输入名称">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="inputfile">文件输入</label>
+            <input type="file" id="inputfile">
+        </div>
+        <div class="checkbox">
+            <label>
+            <input type="checkbox"> 请打勾
+            </label>
+        </div>
+        <button class="btn btn-default">提交(form内)</button>
+    </form>
+    <hr />
+    <h4>--->form-horizontal</h4>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">名字</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="firstname"
+                    placeholder="请输入名字">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">姓</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="lastname"
+                    placeholder="请输入姓">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+            <p class="form-control-static">email@example.com(我是带有form-control-static类的p标签)</p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                    <input type="checkbox"> 此checkbox偏移了2个网格
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">登录</button>
+            </div>
+        </div>
+    </form>
+    <hr />
+    <h4>--->各种控件</h4>
+    <form role="form">
+        <div class="form-group">
+            <label for="name">text</label>
+            <input type="text" class="form-control" placeholder="文本输入">
+            <input type="text" class="form-control" placeholder="disabled" disabled>
+        </div>
+        <fieldset disabled>
+            <div class="form-group">
+                <label for="name">text</label>
+                <input type="text" class="form-control" placeholder="fieldset disabled">
+            </div>
+            <div class="form-group">
+                <label for="name">text</label>
+                <input type="text" class="form-control" placeholder="fieldset disabled">
+            </div>
+        </fieldset>
+        <div class="form-group has-success">
+            <label class="col-sm-2 control-label" for="inputSuccess">
+                输入成功
+            </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputSuccess">
+            </div>
+        </div>
+        <div class="form-group has-warning">
+            <label class="col-sm-2 control-label" for="inputWarning">
+                输入警告
+            </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputWarning">
+            </div>
+        </div>
+        <div class="form-group has-error">
+            <label class="col-sm-2 control-label" for="inputError">
+                输入错误
+            </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputError">
+            </div>
+        </div>
+        <div class="form-group">
+            <label >password</label>
+            <input type="password" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label >datetime</label>
+            <input type="datetime" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label >datetime-local</label>
+            <input type="datetime-local" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label >date</label>
+            <input type="date" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label >month</label>
+            <input type="month" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label >time</label>
+            <input type="time" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label >week</label>
+            <input type="week" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label >number</label>
+            <input type="number" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label >email</label>
+            <input type="email" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label >url</label>
+            <input type="url" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label >search</label>
+            <input type="search" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label >tel</label>
+            <input type="tel" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label >color</label>
+            <input type="color" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label for="name">文本框(rows=5)<label>
+            <textarea class="form-control" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+            <label >选择列表</label>
+            <select class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        
+            <label >可多选的选择列表</label>
+            <select multiple class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </form>
+
+    <div class="form-group">
+        <label >复选框</label>
+        <div class="checkbox">
+            <label><input type="checkbox" value="">选项 1</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" value="">选项 2</label>
+        </div>
+        
+        <label >单选按钮</label>
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1"
+                    value="option1" checked> 选项 1
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios2"
+                    value="option2">
+                    选项 2 - 选择它将会取消选择选项 1
+            </label>
+        </div>
+    </div>
+</div>
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(5)">show/hide</button><<<------按钮------>>></h3>
+<hr />
+<script>
+  $(function() { 
+      $(".loading_wolf").click(function(){
+         $(this).button('loading').delay(2000).queue(function() {
+          alert("test");
+         });        
+      });
+  });  
+</script>
+<div id="id_5">
+    <!-- 标准的按钮 -->
+    <button type="button" class="btn btn-default">default</button>
+    <button type="button" class="btn btn-default active">default active</button>
+    <button type="button" class="btn btn-default disabled">default disabled</button>
+    <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
+    <button type="button" class="btn btn-primary">primary</button>
+    <!-- 表示一个成功的或积极的动作 -->
+    <button type="button" class="btn btn-success">success</button>
+    <!-- 信息警告消息的上下文按钮 -->
+    <button type="button" class="btn btn-info">info</button>
+    <!-- 表示应谨慎采取的动作 -->
+    <button type="button" class="btn btn-warning">warning</button>
+    <!-- 表示一个危险的或潜在的负面动作 -->
+    <button type="button" class="btn btn-danger">danger</button>
+    <!-- 并不强调是一个按钮，看起来像一个链接，但同时保持按钮的行为 -->
+    <button type="button" class="btn btn-link">link</button>
+    <br />
+    <button class="btn btn-warning loading_wolf" data-loading-text="加载中...">加载状态</button>
+    <button type="button" class="btn btn-primary" data-toggle="button"> 单个切换</button>
+    <br />
+    <button type="button" class="btn btn-primary btn-lg">btn-lg</button>
+    <button type="button" class="btn btn-primary">普通大小</button>
+    <button type="button" class="btn btn-primary btn-sm">btn-sm</button>
+    <button type="button" class="btn btn-primary btn-xs">btn-xm</button>
+    <button type="button" class="btn btn-success btn-block">btn-block</button>
+</div>
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(6)">show/hide</button><<<------图像------>>></h3>
+<hr />
+<div id="id_6">
+    <img src="static/img/zl.jpg"
+    class="img-circle">
+    <img src="static/img/xyz.jpg"
+    class="img-rounded">
+    <img src="static/img/xyz.jpg"
+    class="img-thumbnail">
+</div>
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(7)">show/hide</button><<<------字形图标------>>></h3>
+<hr />
+<div id="id_7">
+    <span class="glyphicon glyphicon-user"></span>
+    <span class="glyphicon glyphicon-adjust"></span>
+    <span class="glyphicon glyphicon-arrow-down"></span>
+    <span class="glyphicon glyphicon-camera"></span>
+    <span class="glyphicon glyphicon-expand"></span>
+    <span class="glyphicon glyphicon-folder-open"></span>
+    <span class="glyphicon glyphicon-minus-sign"></span>
+    <span class="glyphicon glyphicon-star-empty"></span>
+    <span class="glyphicon glyphicon-volume-up"></span>
+    <span class="glyphicon glyphicon-wrench"></span>
+</div>
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(8)">show/hide</button><<<------下拉菜单------>>></h3>
+<hr />
+<div id="id_8" class="dropdown">
+    <button type="button" class="btn btn-info dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+      开始<span class="caret"></span>
+   </button>
+   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <li role="presentation" class="dropdown-header">下拉菜单标题</li>
+      <li role="presentation">
+         <a role="menuitem" tabindex="-1" href="#">选我</a>
+      </li>
+      <li role="presentation">
+         <a role="menuitem" tabindex="-1" href="#">选我</a>
+      </li>
+      <li role="presentation">
+         <a role="menuitem" tabindex="-1" href="#">不，选我</a>
+      </li>
+      <li role="presentation" class="divider"></li>
+      <li role="presentation">
+         <a role="menuitem" tabindex="-1" href="#">你们玩</a>
+      </li>
+   </ul>
+</div>
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(9)">show/hide</button><<<------按钮组------>>></h3>
+<hr />
+<div id="id_9">
+    <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group btn-group-lg">
+            <button type="button" class="btn btn-default">按钮 1</button>
+            <button type="button" class="btn btn-default">按钮 2</button>
+            <button type="button" class="btn btn-default">按钮 3</button>
+        </div>
+        <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-primary">按钮 4</button>
+            <button type="button" class="btn btn-primary">按钮 5</button>
+            <button type="button" class="btn btn-primary">按钮 6</button>
+        </div>
+        <div class="btn-group btn-group-xs">
+            <button type="button" class="btn btn-info">按钮 7</button>
+            <button type="button" class="btn btn-info">按钮 8</button>
+            <button type="button" class="btn btn-info">按钮 9</button>
+        </div>
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-warning">
+                <input type="checkbox"> 选项 1
+            </label>
+            <label class="btn btn-warning">
+                <input type="checkbox"> 选项 2
+            </label>
+            <label class="btn btn-warning">
+                <input type="checkbox"> 选项 3
+            </label>
+        </div>
+
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-warning">
+                <input type="radio" name="options" id="option1"> 选项 1
+            </label>
+            <label class="btn btn-warning">
+                <input type="radio" name="options" id="option2"> 选项 2
+            </label>
+            <label class="btn btn-warning">
+                <input type="radio" name="options" id="option3"> 选项 3
+            </label>
+        </div>   
+    </div>
+
+</div>
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(10)">show/hide</button><<<------导航Navigation------>>></h3>
+<hr />
+<div id="id_10">
+    <p>标签式的导航菜单</p>
+    <ul class="nav nav-tabs">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">SVN</a></li>
+    <li class="disabled"><a href="#">iOS(禁用)</a></li>
+    <li><a href="#">VB.Net</a></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+         Java <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+         <li><a href="#">Swing</a></li>
+         <li><a href="#">jMeter</a></li>
+         <li><a href="#">EJB</a></li>
+         <li class="divider"></li>
+         <li><a href="#">分离的链接</a></li>
+      </ul>
+   </li>
+    <li><a href="#">PHP</a></li>
+    </ul>
+    <br />
+    <p>基本的胶囊式导航菜单</p>
+    <ul class="nav nav-pills">
+    <li><a href="#">Home</a></li>
+    <li class="active"><a href="#">SVN</a></li>
+    <li><a href="#">iOS</a></li>
+    <li><a href="#">VB.Net</a></li>
+    <li><a href="#">Java</a></li>
+    <li><a href="#">PHP</a></li>
+    </ul>
+    <br />
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">头部</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">iOS</a></li>
+                <li><a href="#"><span class="badge pull-right">5</span>SVN</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Java 
+                    <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                    <li><a href="#">jmeter</a></li>
+                    <li><a href="#">EJB</a></li>
+                    <li><a href="#">Jasper Report</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">分离的链接</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">另一个分离的链接</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <h4>淡入淡出效果</h4>
+    <ul id="myTab" class="nav nav-tabs">
+    <li class="active">
+        <a href="#home" data-toggle="tab">Test</a>
+    </li>
+    <li><a href="#ios" data-toggle="tab">iOS</a></li>
+    <li class="dropdown">
+        <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Java <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+            <li><a href="#jmeter" tabindex="-1" data-toggle="tab">jmeter</a></li>
+            <li><a href="#ejb" tabindex="-1" data-toggle="tab">ejb</a></li>
+        </ul>
+    </li>
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="home">
+            <p>Hello World</p>
+        </div>
+        <div class="tab-pane fade" id="ios">
+            <p>balabalabala</p>
+        </div>
+        <div class="tab-pane fade" id="jmeter">
+            <p>123456</p>
+        </div>
+        <div class="tab-pane fade" id="ejb">
+            <p>jiantong</p>
+        </div>
+    </div>
+</div>
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(11)">show/hide</button><<<------分页------>>></h3>
+<hr />
+<div id="id_11">
+    <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li class="disabled"><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+
+</div>
+
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(12)">show/hide</button><<<------警告------>>></h3>
+<hr />
+<div id="id_12">
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        成功！很好地完成了提交。
+    </div>
+    <div class="alert alert-info alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        信息！请注意这个信息。
+    </div>
+    <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        警告！请不要提交。
+    </div>
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        错误！请进行一些更改。
+    </div>
+</div>
+
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(13)">show/hide</button><<<------进度条------>>></h3>
+<hr />
+<div id="id_13">
+    <div class="progress progress-striped active">
+        <div class="progress-bar progress-bar-success" role="progressbar"
+            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+            style="width: 70%;">
+            <span class="sr-only">70% 完成</span>
+        </div>
+    </div>
+
+</div>
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(14)">show/hide</button><<<------模态框Modal------>>></h3>
+<hr />
+<div id="id_14">
+    <button class="btn btn-warning" data-toggle="modal" data-target="#myModal">模态框,变!</button>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">modal-title</h4>
+                </div>
+                <div class="modal-body">modal-body</div>
+                <div class="modal-footer">
+                    modal-footer
+                    <button type="button" class="btn btn-default" data-dismiss="modal">XX </button>
+                    <button type="button" class="btn btn-primary"> 提交更改 </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(15)">show/hide</button><<<------工具提示------>>></h3>
+<hr />
+
+<script>
+   $(function () { $("[data-toggle='tooltip']").tooltip(); });
+</script>
+
+<div id="id_15">
+    <button type="button" class="btn btn-default" data-toggle="tooltip"
+    title="默认的 Tooltip">
+    默认的 Tooltip
+    </button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip"
+    data-placement="left" title="左侧的 Tooltip">
+    左侧的 Tooltip
+    </button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip"
+    data-placement="top" title="顶部的 Tooltip">
+    顶部的 Tooltip
+    </button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip"
+    data-placement="bottom" title="底部的 Tooltip">
+    底部的 Tooltip
+    </button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip"
+    data-placement="right" title="右侧的 Tooltip">
+    右侧的 Tooltip
+    </button>
+</div>
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(16)">show/hide</button><<<------弹出框------>>></h3>
+<hr />
+<script>$(function (){ $("[data-toggle='popover']").popover();});</script>
+
+<div id="id_16">
+    <div class="container" style="padding: 100px 200px 10px;" >
+        <button type="button" class="btn btn-default" title="Popover title" 
+            data-container="body" data-toggle="popover" data-placement="left"
+            data-content="左侧的 Popover 中的一些内容">
+            左侧的 Popover
+        </button>
+        <button type="button" class="btn btn-primary" title="Popover title" 
+            data-container="body" data-toggle="popover" data-placement="top"
+            data-content="顶部的 Popover 中的一些内容">
+            顶部的 Popover
+        </button>
+        <button type="button" class="btn btn-success" title="Popover title" 
+            data-container="body" data-toggle="popover" data-placement="bottom"
+            data-content="底部的 Popover 中的一些内容">
+            底部的 Popover
+        </button>
+        <button type="button" class="btn btn-warning" title="Popover title" 
+            data-container="body" data-toggle="popover" data-placement="right"
+            data-content="右侧的 Popover 中的一些内容">
+            右侧的 Popover
+        </button>
+   </div>
+</div>
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(17)">show/hide</button><<<------警告框------>>></h3>
+<hr />
+<script type="text/javascript">
+$(function(){$("#myAlert_success").bind('closed.bs.alert', function () {alert("继续加油!");});});
+$(function(){$("#myAlert_warning").bind('closed.bs.alert', function () {alert("再接再厉!");});});
+function myAlert_handle(stat)
+{
+    if(stat)
+        $("#myAlert_success").show();
+    else
+        $("#myAlert_warning").show();
+}
+</script> 
+
+<div id="id_17">
+    <div id="myAlert_success" class="alert alert-success" style="display: none">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        恭喜你，答对了!
+    </div>
+    <div id="myAlert_warning" class="alert alert-warning" style="display: none">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        对不起，您打错了!
+    </div>
+    第一次鸦片战争于哪一年结束?
+    <br />
+    <button type="text" class="btn btn-info" onclick="myAlert_handle(0)">A. 1840</button>
+    <button type="text" class="btn btn-info" onclick="myAlert_handle(1)">B. 1842</button>
+</div>
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(18)">show/hide</button><<<------折叠效果------>>></h3>
+<hr />
+<div id="id_18">
+    <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#demo">
+    简单的可折叠组件
+    </button>
+    <div id="demo" class="collapse in">
+    Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+    cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+    vice lomo.
+    </div>
+
+</div>
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(19)">show/hide</button><<<------轮播------>>></h3>
+<hr />
+<div id="id_19">
+    <div id="myCarousel" class="carousel slide">
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>  
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="static/img/ASCII.jpg" alt="First slide">
+            <div class="carousel-caption">标题 1</div>
+        </div>
+        <div class="item">
+            <img src="static/img/zl.jpg" alt="Second slide">
+            <div class="carousel-caption">标题 2</div>
+            
+        </div>
+        <div class="item">
+            <img src="/media/uploads/2014/07/slide3.png" alt="Third slide">
+            <div class="carousel-caption">标题 3</div>
+        </div>
+    </div>
+    <!-- 轮播（Carousel）导航 -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+</div>
+
+<hr />
+<h3><button class="btn btn-primary" onclick="show_or_hide(x)">show/hide</button><<<------备用------>>></h3>
+<hr />
+<div id="id_x">
+
+
+</div>
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+$('#myModal').on('show.bs.modal', function () {
+  alert("你好!我是show.bs.modal事件");
+})
+
+$('#myModal').on('shown.bs.modal', function () {
+  alert("你好!我是shown.bs.modal事件");
+})
+
+$('#myModal').on('hide.bs.modal', function () {
+  alert("你好!我是hide.bs.modal事件");
+})
+
+$('#myModal').on('hidden.bs.modal', function () {
+  alert("你好!我是hidden.bs.modal事件");
+})
+
+function table_defalut_or_beauty(id, act)
+{
+    if(act == 'beauty')
+        $("#"+id).addClass("table-condensed table-striped table-bordered table-hover");
+    else if(act == 'default')
+        $('#'+id).removeClass("table-condensed table-striped table-bordered table-hover");
+}
+
+var num_max = 100;
+
+function show_or_hide(num)
+{
+    if(num == 'show'){
+        for(var i=1;i<=num_max;i++)
+            $("#id_"+i).show();
+    }
+    else if(num == 'hide'){
+        for(var i=1;i<=num_max;i++)
+            $("#id_"+i).hide();
+    }
+    else{
+        var el = $("#id_"+num);
+        if(el.is(':visible'))
+            el.hide();
+        else
+            el.show();
+    }
+}
+
+show_or_hide('hide');
+
+</script>

@@ -1,0 +1,674 @@
+<! DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/bootstrap-theme.min.css" rel="stylesheet">
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+
+    <script src="static/js/vue.min.js"></script>
+    <script type="text/javascript" src="/static/js/csrf.js"></script>
+</head>
+
+<body>
+<h1><<<<<--------------开始您的VUE旅程 <small>{{init_data.title_small}}</small>-------------->>>>></h1>
+<button class="btn btn-warning" onclick="show_or_hide('show')">展开所有</button>&nbsp;<button class="btn btn-warning" onclick="show_or_hide('hide')">隐藏所有</button>
+<h3><button class="btn btn-primary" onclick="show_or_hide(1)">show/hide</button><<<------Basic------>>></h3>
+<hr />
+<div  id="id_1">
+    <div id="id_1_1">
+        <p>[[message]]</p>
+        <p>[[func()]]</p>
+    </div>
+    <h4>^_^: 当一个 Vue 实例被创建时，它向 Vue 的响应式系统中加入了其 data 对象中能找到的所有的属性。当这些属性的值发生改变时，html 视图将也会产生相应的变化。</h4>
+</div>
+<hr />
+
+<script>
+var vm = new Vue({
+  delimiters:['[[', ']]'],
+  el: '#id_1_1',
+  data: {
+    message: 'Hello World!(data)',
+    internal: 'something',
+  },
+  methods:{
+      func: function(){
+          return this.internal + '(methods)'
+      }
+  }
+})
+
+vm.internal = 'Change';
+</script>
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(2)">show/hide</button><<<------模板语法------>>></h3>
+<hr />
+<div  id="id_2">
+    <div id="id_2_1">
+        <p>^_^: 使用 v-html 指令用于输出 html 代码:</p>
+            <div v-html="msg"></div>
+            <div>[[msg]]</div>
+        <br />
+        <p>^_^: HTML 属性中的值应使用 v-bind 指令:</p>
+        <p>在 input 输入框中我们可以使用 v-model 指令来实现双向数据绑定：</p>
+            <input type="text" v-model="show_hide" placeholder="输入none试试"></input>
+            <div v-bind:style="{'display': show_hide}">
+                输入none，我会消失(v-bind:style='dispaly':XX)
+            </div>
+            <p v-if="show_hide">输入空，我会消失(v-if="XX")</p>
+        <br />
+        <p>^_^: Vue.js 都提供了完全的 JavaScript 表达式支持:</p>
+            <div>
+             5+5= [[5+5]]<br>
+             show_hide? [[show_hide ? 'YES' : 'NO']] <br>
+             倒置: [[ show_hide.split('').reverse().join('') ]] 
+            </div>
+        <br />
+        <p>^_^: v-on 指令，它用于监听 DOM 事件：</p>
+        <button type="text" v-on:click="function(){alert('click')}"
+                            v-on:focus="reverseMessage">[[msg_2]]</button>
+        <br />
+        <p>^_^: Vue.js 允许你自定义过滤器，被用作一些常见的文本格式化。由"管道符"指示</p>
+        [[msg_2 | filter_func]]
+        <br />
+        <p>Vue.js 为两个最为常用的指令提供了特别的缩写(v-bind和v-on)：</p>
+        <a v-bind:href="www">v-bind:href</a>
+        <a :href="www">:href</a>
+        <button v-on:click="function(){alert('v-on:click')}">test</button>
+        <button @click="function(){alert('@click')}">test</button>
+    </div>
+
+</div>
+<hr />
+<script>
+var vm = new Vue({
+  delimiters:['[[', ']]'],
+  el: '#id_2_1',
+  data: {
+    msg: '<button>btn</button>',
+    msg_2: '1-2-3-4-5',
+    show_hide: 'block',
+    www: '#id_2',
+  },
+  methods:{
+      reverseMessage: function(){
+         this.msg_2 = this.msg_2.split('').reverse().join('')
+      }
+  },
+  filters:{
+      filter_func: function(value){
+          return value + " & " + value;
+      }
+  }
+})
+
+</script>
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(3)">show/hide</button><<<------条件------>>></h3>
+<hr />
+<div  id="id_3">
+    <div id="id_3_1">
+        <p v-if="b">111</p>
+        <p v-else-if="a">222</p>
+        <p v-else>333</p>
+        
+        <h3 v-show="a">I am v-show</h3>
+    </div>
+</div>
+<hr />
+
+<script>
+new Vue({
+  el: '#id_3_1',
+  data: {
+    a: true,
+    b: false,
+  }
+})
+</script>
+
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(4)">show/hide</button><<<------循环------>>></h3>
+<hr />
+<div  id="id_4">
+    <div id="id_4_1">
+    <ol>
+        <li v-for="stu in students">
+        [[ stu.name ]]
+        </li>
+    </ol>
+    <br />
+    <ul>
+        <li v-for="value,key,index in object">
+            [[ value ]]([[index]]--[[key]])
+        </li>
+    </ul>
+    <br />
+    <ul>
+        <li v-for="n in 5">
+            [[n]]-->
+        </li>
+    </ul>
+
+    </div>
+</div>
+<hr />
+ 
+<script>
+new Vue({
+  delimiters:['[[', ']]'],
+  el: '#id_4_1',
+  data: {
+    students: [
+      { name: 'zhangsan' },
+      { name: 'lisi' },
+      { name: 'wangwu' }
+    ],
+    object: {
+      name: 'NAME',
+      url: 'URL',
+      slogan: 'SLOGAN'
+    }
+  }
+})
+</script>
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(5)">show/hide</button><<<------计算属性------>>></h3>
+<hr />
+<div  id="id_5">
+    <div  id="id_5_1">
+        <p>原始: [[ message ]]</p>
+        <p>computed处理过: [[ message2 ]]</p>
+        <p>methods处理过: [[ message3() ]]</p>
+    </div>
+</div>
+<hr />
+<script>
+new Vue({
+  delimiters:['[[', ']]'],
+  el: '#id_5_1',
+  data: {
+      message: "{{init_data.title_small}}"
+  },
+  computed: {
+    // 计算属性的 getter
+    message2: function () {
+      // `this` 指向 vm 实例
+      return this.message.split('').reverse().join('')
+    }
+  },
+  methods: {
+    message3: function () {
+      return this.message.split('').reverse().join('')
+    }
+  }
+
+})
+</script>
+
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(6)">show/hide</button><<<------监听属性------>>></h3>
+<hr />
+<div  id="id_6">
+    <div id = "computed_props">
+    千米 : <input type = "text" v-model = "kilometers">
+    米 : <input type = "text" v-model = "meters">
+    </div>
+<p id="info"></p>
+<script type = "text/javascript">
+    var vm = new Vue({
+        el: '#computed_props',
+        data: {
+            kilometers : 0,
+            meters:0
+        },
+        methods: {
+        },
+        computed :{
+        },
+        watch : {
+            kilometers:function(val) {
+                this.kilometers = val;
+                this.meters = val * 1000;
+            },
+            meters : function (val) {
+                this.kilometers = val/ 1000;
+                this.meters = val;
+            }
+        }
+    });
+    // $watch 是一个实例方法
+    vm.$watch('kilometers', function (newValue, oldValue) {
+        // 这个回调将在 vm.kilometers 改变后调用
+        // document.getElementById ("info").innerHTML = "修改前值为: " + oldValue + "，修改后值为: " + newValue;
+        if(newValue == 0)
+            $('#info').html("");
+        else
+            $('#info').html($('#info').html()+'<br />'+newValue);
+    })
+</script>
+</div>
+<hr />
+
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(7)">show/hide</button><<<------样式绑定------>>></h3>
+<hr />
+
+<style>
+.active_7_1 {
+	width: 50px;
+	height: 50px;
+	background: green;
+}
+.active_7_2 {
+	background: blue;
+}
+
+.active_7_3 {
+	height: 100px;
+}
+</style>
+
+<div  id="id_7">
+    
+    <div id = "id_7_1">
+        <p>^_^: class 与 style 是 HTML 元素的属性，用于设置元素的样式，我们可以用 v-bind 来设置样式属性。</p>
+        <input type="text" v-model="isActive"></input>
+        <div class="active_7_2" v-bind:class="{ active_7_3: isActive, active_7_1: isActive }">test</div>
+        <div v-bind:class="classObject">test2</div>
+        <p>^_^: 可以在 v-bind:style 直接设置样式：</p>
+        <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">test3</div>
+    </div>
+
+
+    <script type = "text/javascript">
+    var vm = new Vue({
+        el: '#id_7_1',
+        data: {
+            activeColor: 'red',
+            fontSize: 50,
+            isActive: true,
+            classObject: {
+                active_7_3: true,
+                'active_7_1': true
+            }
+        },
+        methods: {
+        },
+        computed :{
+        },
+        watch : {
+        }
+    });
+        
+    </script>
+</div>
+<hr />
+
+
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(8)">show/hide</button><<<------事件处理器------>>></h3>
+<hr />
+<div  id="id_8">
+    <div id = "id_8_1">
+        <p>^_^: Vue.js 为 v-on 提供了事件修饰符来处理 DOM 事件细节，如：event.preventDefault() 或 event.stopPropagation()。</p>
+        <p>Vue.js通过由点(.)表示的指令后缀来调用修饰符。</p>
+        <ul>
+            <li v-for="tmp in qualifier">
+                .[[tmp]]
+            </li>
+        </ul>
+        <p>Vue 允许为 v-on 在监听键盘事件时添加按键修饰符</p>
+        <input type="text" @keyup.once.enter="function(){alert('keyup.once.enter')}" value="test" />
+        <p>按键别名：</p>
+        <ul>
+            <li v-for="tmp in keys">
+                .[[tmp]]
+            </li>
+        </ul>
+    </div>
+
+
+<script type = "text/javascript">
+var vm = new Vue({
+    delimiters:['[[', ']]'],
+    el: '#id_8_1',
+    data: {
+        qualifier:[
+            'stop', 'prevent', 'capture', 'self', 'once'
+        ],
+        keys:[
+            'enter','tab','delete','esc','space','up','down','left','right','ctrl','alt','shift','meta'
+        ]
+    },
+    methods: {
+    },
+    computed :{
+    },
+    watch : {
+    }
+});
+    
+</script>
+</div>
+<hr />
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(9)">show/hide</button><<<------表单------>>></h3>
+<hr />
+<div  id="id_9">
+    <div id = "id_9_1">
+        <p>单个复选框：</p>
+        <input type="checkbox" id="singlecheckbox" v-model="checked">
+        <label for="singlecheckbox">[[ checked ]]</label>
+            
+        <p>多个复选框：</p>
+        <input type="checkbox" id="runoob" value="Runoob" v-model="checkedNames">
+        <label for="runoob">Runoob</label>
+        <input type="checkbox" id="google" value="Google" v-model="checkedNames">
+        <label for="google">Google</label>
+        <input type="checkbox" id="taobao" value="Taobao" v-model="checkedNames">
+        <label for="taobao">taobao</label>
+        <br>
+        <span>选择的值为: [[ checkedNames ]]</span>
+        <br />
+        <input type="radio" id="runoob" value="Runoob" v-model="picked">
+        <label for="runoob">Runoob</label>
+        <br>
+        <input type="radio" id="google" value="Google" v-model="picked">
+        <label for="google">Google</label>
+        <br>
+        <span>选中值为: [[ picked ]]</span>
+        <br />
+        <select v-model="selected" name="fruit">
+            <option value="">选择一个网站</option>
+            <option value="www.runoob.com">Runoob</option>
+            <option value="www.google.com">Google</option>
+        </select>
+        <br />
+        <div id="output">
+            选择的网站是: [[ selected ]]
+        </div>
+        v-model.lazy: [[msg_lazy]]
+        <br />
+        <input v-model.lazy="msg_lazy" >
+        <br />
+        v-model: [[msg]]
+        <br />
+        <input v-model="msg" >
+        
+    </div>
+
+
+<script type = "text/javascript">
+var vm = new Vue({
+    delimiters: ['[[', ']]'],
+    el: '#id_9_1',
+    data: {
+        checked : false,
+        checkedNames: [],
+        picked : 'Runoob',
+        selected: '',
+        msg_lazy: '',
+        msg: '',
+    },
+    methods: {
+    },
+    computed :{
+    },
+    watch : {
+    }
+});
+    
+</script>
+</div>
+<hr />
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(10)">show/hide</button><<<------组件------>>></h3>
+<hr />
+<div  id="id_10">
+    <div id = "id_10_1">
+        全局组件示例：<br />
+        <mycomp></mycomp>
+        局部组件示例：<br />
+        <localcomp></localcomp>
+        prop示例：<br />
+        <child msg1="MSG1" v-bind:msg2="test"></child>
+        <p>父组件是使用 props 传递数据给子组件，但如果子组件要把数据传递回去，就需要使用自定义事件.<br />
+           我们可以使用 v-on 绑定自定义事件, 每个 Vue 实例都实现了事件接口(Events interface)，即：<br />
+           - 使用 $on(eventName) 监听事件<br />
+           - 使用 $emit(eventName) 触发事件
+        </p>
+
+        <p>[[ total ]]</p>
+        <button-inc v-on:inc="incTotal"></button-inc>
+        <button-dec v-on:dec="decTotal"></button-dec>
+    </div>
+
+
+<script type = "text/javascript">
+Vue.component('mycomp',{
+    template: '<h1>I am a component</h1>'
+})
+
+Vue.component('button-inc',{
+    delimiters:['[[', ']]'],
+    template: '<button v-on:click="incHandle">[[counter]]</button>',
+    data: function(){
+        return {
+            counter: 0
+        }
+    },
+    methods: {
+        incHandle: function(){
+            this.counter += 1
+            this.$emit('inc')
+        }
+    },
+})
+
+Vue.component('button-dec',{
+    delimiters:['[[', ']]'],
+    template: '<button v-on:click="decHandle">[[counter]]</button>',
+    data: function(){
+        return {
+            counter: 0
+        }
+    },
+    methods: {
+        decHandle: function(){
+            this.counter += 1
+            this.$emit('dec')
+        }
+    },
+})
+
+var vm = new Vue({
+    delimiters:['[[', ']]'],
+    el: '#id_10_1',
+    components:{
+        'localcomp':{template: '<h3>I am a local component</h3>'},
+        'child':{
+            delimiters:['[[', ']]'],
+            props: ['msg1', 'msg2'],
+            template: '<h3>[[msg1]]<small>[[msg2]]</small><h3>'
+        },
+    },
+    data: {
+        test:'ttt',
+        total: 0
+    },
+    methods: {
+        incTotal: function () {
+            this.total += 1
+        },
+        decTotal: function(){
+            this.total -= 1
+        }
+    },
+    computed :{
+    },
+    watch : {
+    }
+});
+    
+</script>
+</div>
+<hr />
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(11)">show/hide</button><<<------自定义指令------>>></h3>
+<hr />
+<div  id="id_11">
+    <div id = "id_11_1">
+        <p>全局指令：</p>
+        <input v-test>
+        <p>局部指令：</p>
+        <input v-test2>
+        <br />
+        <p>钩子函数</p>
+        <input id="id_11_2" type="text" v-test3>
+        <br />
+        <button @click="remove_test3">unbind?</button>
+        <div v-test4:wolf.qq.ww="something"></div>
+    </div>
+
+
+<script type = "text/javascript">
+
+Vue.directive('test', {
+    inserted: function(el){
+        el.focus()
+    }
+})
+
+Vue.directive('test3', {
+    bind: function(el){
+        alert("hook-bind");
+    },
+    inserted: function(el){
+        alert("hook-inserted");
+    },
+    update: function(el){
+        alert("hook-update");
+    },
+    componentUpdated: function(el){
+        alert("hook-componentUpdated");
+    },
+    unbind: function(el){
+        alert("hook-unbind");
+    }
+})
+
+Vue.directive('test4', {
+    bind: function (el, binding, vnode) {
+    var s = JSON.stringify
+    el.innerHTML =
+      'name: '       + s(binding.name) + '<br>' +
+      'value: '      + s(binding.value) + '<br>' +
+      'expression: ' + s(binding.expression) + '<br>' +
+      'argument: '   + s(binding.arg) + '<br>' +
+      'modifiers: '  + s(binding.modifiers) + '<br><br>' +
+      'vnode keys: ' + Object.keys(vnode).join(', ')
+  }
+})
+
+var vm = new Vue({
+    el: '#id_11_1',
+    directives:{
+        test2:{
+            inserted: function(el){
+                el.focus();
+            }
+        }
+    },
+    data: {
+        something: 'I am something'
+    },
+    methods: {
+        remove_test3: function(){
+            // $('#id_11_2').removeAttr("v-test3");
+            // $('#id_11_2').unbind("v-test3");
+        }
+    },
+    computed :{
+    },
+    watch : {
+    }
+});
+    
+</script>
+</div>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(X)">show/hide</button><<<------test------>>></h3>
+<hr />
+<div  id="id_X">
+    <div id = "id_X_1">
+        
+    </div>
+
+
+<script type = "text/javascript">
+var vm = new Vue({
+    el: '#id_X_1',
+    data: {
+    },
+    methods: {
+    },
+    computed :{
+    },
+    watch : {
+    }
+});
+    
+</script>
+</div>
+<hr />
+
+
+
+
+
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+var num_max = 100;
+
+function show_or_hide(num)
+{
+    if(num == 'show'){
+        for(var i=1;i<=num_max;i++)
+            $("#id_"+i).show();
+    }
+    else if(num == 'hide'){
+        for(var i=1;i<=num_max;i++)
+            $("#id_"+i).hide();
+    }
+    else{
+        var el = $("#id_"+num);
+        if(el.is(':visible'))
+            el.hide();
+        else
+            el.show();
+    }
+}
+
+show_or_hide('hide');
+
+show_or_hide(11);
+
+</script>

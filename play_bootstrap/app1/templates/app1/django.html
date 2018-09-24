@@ -1,0 +1,242 @@
+<! DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/bootstrap-theme.min.css" rel="stylesheet">
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+
+    <script src="static/js/vue.min.js"></script>
+    <script type="text/javascript" src="/static/js/csrf.js"></script>
+</head>
+
+<script type="text/javascript">
+
+var num_max = 100;
+
+function show_or_hide(num)
+{
+    if(num == 'show'){
+        for(var i=1;i<=num_max;i++)
+            $("#id_"+i).show();
+    }
+    else if(num == 'hide'){
+        for(var i=1;i<=num_max;i++)
+            $("#id_"+i).hide();
+    }
+    else{
+        var el = $("#id_"+num);
+        if(el.is(':visible'))
+            el.hide();
+        else
+            el.show();
+    }
+}
+
+show_or_hide('hide');
+
+</script>
+
+<body>
+<h1><<<<<--------------开始您的django旅程 <small>Ready?</small>-------------->>>>></h1>
+<button class="btn btn-warning" onclick="show_or_hide('show')">展开所有</button>&nbsp;<button class="btn btn-warning" onclick="show_or_hide('hide')">隐藏所有</button>
+<h3><button class="btn btn-primary" onclick="show_or_hide(1)">show/hide</button><<<------基本命令------>>></h3>
+<hr />
+<div  id="id_1">
+    <p>新建django工程：django-admin.py startproject XXX</p>
+    <p>新建app：python manage.py startapp XXX 或 
+        django-admin.py startapp XXX</p>
+    <p>创建数据库表 或更改数据库表/字段：<br>
+       python manage.py makemigrations<br>
+       python manage.py migrate</p>
+    <p>运行服务器：python manage.py runserver 0.0.0.0:8000</p>
+    <p>清空数据库：python manage.py flush</p>
+    <p>创建超级管理员：python manage.py createsuperuser</p>
+    <p>修改用户名密码：python manage.py changepassword username</p>
+    <p>导入导出数据：python manage.py dumpdata appname > appname.json</p>
+    <p>&emsp;&emsp; python manage.py loaddata appname.json</p>
+    <p>Django项目环境终端：python manage.py shell</p>
+    <p>数据库命令行：python mange.py dbshell</p>
+    <br>
+    <p>更多命令：终端上输入python manage.py ...</p>
+</div>
+<hr />
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(2)">show/hide</button><<<------模板------>>></h3>
+<hr />
+<div  id="id_2">
+{% verbatim %}
+<p>一般的变量之类的用 {{ }}（变量），功能类的，比如循环，条件判断是用 {%  %}（标签）</p>
+{% endverbatim %}
+<p>在模板中取字典的键是用点info_dict.site，而不是Python中的 info_dict['site']</p>
+<p>my_dict.first: {{my_dict.first}} my_dict.second: {{my_dict.second}}</p>
+<p>条件判断和for循环示例：</p>
+{% for item in my_dict.list %}
+    {{item}}{% if not forloop.last %},{% endif %}
+{% empty %}
+    The my_dict.list is empty!
+{% endfor %}
+<p>模板上得到视图对应的网址:</p>
+{% url 'test_url' 123 45 as the_url %}
+<a href="{{ the_url }}">链接到：{{ the_url }}</a>
+<!--<p>request变量：</p>
+{% for key, value in request.items %}
+    {{key}}:{{value}}
+{% endfor %}-->
+<p>request变量：</p>
+<div>request.user: {{request.user}}</div>
+<div>request.user.is_authenticated: {{request.user.is_authenticated}}</div>
+<div>request.path: {{request.path}}</div>
+<div>request.method: {{request.method}}</div>
+
+<br />
+<p>include app1/base_1.html...</p>
+{% include 'app1/base_1.html' %}
+<p>比较符号前后必须有至少一个空格</p>
+{% if my_dict.num >= 5 %}
+    my_dict.num >= 5
+{% elif my_dict.num >= 3%}
+    my_dict.num >= 3
+{% else %}
+    else ..
+{% endif %}
+<br />
+{% if my_dict.num in my_dict.list %}
+    my_dict.num in my_dict.list
+{% else %}
+    my_dict.num not in my_dict.list
+{% endif %}
+
+</div>
+<hr />
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(3)">show/hide</button><<<------模型(数据库)------>>></h3>
+<hr />
+<div  id="id_3">
+    <p>新建一个对象的方法</p>
+    <div>1. OrigUser.objects.create(username=XX,age=XX)</div>
+    <div>2. u = OrigUser(username=XX,age=XX)<br>
+     &nbsp; u.save()</div>
+    <div>3. u = OrigUser(username=XX)<br>
+     &nbsp; u.age = XX<br>
+     &nbsp; u.save()</div>
+    <div>4. OrigUser.objects.get_or_create(username=XX,age=YY)</div>
+    <br>
+    <p>获取对象的方法</p>
+    <div>1. OrigUser.objects.all()</div>
+    <div>2. OrigUser.objects.all()[:10] 切片操作</div>
+    <div>3. OrigUser.objects.get(username=XX) 获取一个对象，如果多个会报错</div>
+    <div>4. OrigUser.objects.filter(username__exact=XX)</div>
+    <div>5. OrigUser.objects.filter(username__contains=XX)</div>
+    <div>6. OrigUser.objects.filter(username__regex=XX)</div>
+    <div>7. OrigUser.objects.exclude(username__contains=XX)</div>
+    <div>8. OrigUser.objects.filter(...).exclude(...)</div>
+    <br>
+    <div>删除符合条件的结果: 用delete()</div>
+    <div>批量更新：用update(username='XX')</div>
+    <div>QuerySet是可迭代的，可用for迭代</div>
+    <div>几个点了解一下：<br>
+    - OrigUser.objects.all().exists()<br>
+    - OrigUser.objects.count()<br>
+    - list(xx) 强行将QuerySet变成列表<br>
+    </div>
+    <div>QuerySet是可以用pickle序列化到硬盘再读取出来的???</div>
+    <div>查询结果排序：OrigUser.objects.all().order_by('-username')<br>
+        这里加了一个负号，表示倒序</div>
+    <div>QuerySet不支持负索引，但可以用reverse：<br>
+        OrigUser.objects.all().reverse()[:2]</div>
+    <div>使用.distinct()去重复</div>
+    <br>
+    <p>从数据库中查询出来的结果一般是一个集合，这个集合叫做 QuerySet。</p>
+    <div>1. 查看Django queryset执行的SQL<br>
+    - 输入：print(Author.objects.all().query)<br>
+    结果简化：SELECT id, name, qq, addr, email FROM app1_author;<br>
+    - 输入：print(Author.objects.filter(name="asdf").query)<br>
+    结果简化：SELECT id, name, qq, addr, email FROM app1_author WHERE name=asdf;<br>
+    </div>
+    <div>2. values_list获取元组形式结果
+    <br>print(Author.objects.values_list('name', 'addr', 'email'))
+    <br>如果只需要 1 个字段，可以指定 flat=True
+    <br>print(Author.objects.values_list('name', flat=True))
+    </div>
+    <div>3. values 获取字典形式的结果
+    <br>print(list(Author.objects.values('name', 'qq')))
+    <br>注意：values_list 和 values 返回的并不是真正的 列表 或 字典，也是 queryset，他们也是 lazy evaluation 的
+
+    </div>
+    <div>4. extra 实现 别名，条件，排序等
+    <br>别名：print(Author.objects.all().extra(select={'alias_name':'name'}).defer('name').query)
+    </div>
+    <div>5. annotate聚合 计数，求和，平均数等
+    <br>计数：
+    <br>from django.db.models import Count    
+    <br>Article.objects.all().values('author_id').annotate(count=Count('author')).values('author_id', 'count')
+    <br>简化SQL：SELECT author_id, COUNT(author_id) AS count FROM blog_article GROUP BY author_id
+    <br>未完待续...难哦
+    </div>
+    <div>6.  select_related 优化一对一，多对一查询
+    <br>未完待续...难哦
+    </div>
+    <div>7. prefetch_related 优化一对多，多对多查询
+    <br>未完待续...难哦
+    </div>
+    <div>8. defer 排除不需要的字段
+    <br>未完待续...难哦
+    </div>
+    <div>9. only 仅选择需要的字段
+    <br>未完待续...难哦
+    </div>
+    <div>10. 自定义聚合功能
+    <br>未完待续...难哦
+    </div>
+    <div>
+
+    </div>
+
+</div>
+<hr />
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(4)">show/hide</button><<<------后台------>>></h3>
+<hr />
+<div  id="id_4">
+    1. python manage.py createsuperuser 创建超级管理员
+<br>2. app/admin.py中注册相应的数据 
+</div>
+<hr />
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(5)">show/hide</button><<<------表单------>>></h3>
+<hr />
+<div  id="id_5">
+    <p>get类型表单：(请输入数字)</p>
+    <form action="/play_django/get_test" method="get">
+        a: <input type="text" name="a"> <br>
+        b: <input type="text" name="b"> <br>
+        <input type="submit" value="GET">
+    </form>
+    <hr>
+    <p>post类型表单：</p>
+    <form method='post'>
+    {% csrf_token %}
+    {{ my_dict.form }}
+    <input type="submit" value="POST">
+    </form>
+
+
+</div>
+<hr />
+
+
+
+
+<h3><button class="btn btn-primary" onclick="show_or_hide(X)">show/hide</button><<<------test------>>></h3>
+<hr />
+<div  id="id_X">
+    
+</div>
+<hr />
+
+
+</body>
+</html>
+
