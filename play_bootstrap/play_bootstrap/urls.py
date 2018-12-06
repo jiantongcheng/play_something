@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^play_bootstrap$', app1_views.bootstrap),
     url(r'^play_vue$', app1_views.vue),
     url(r'^play_django$', app1_views.django),
+    url(r'^play_python$', app1_views.python_test),
 
     url(r'^admin/', admin.site.urls),
 

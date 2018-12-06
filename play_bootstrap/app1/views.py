@@ -12,6 +12,9 @@ class AddForm(forms.Form):
     a = forms.IntegerField()
     b = forms.IntegerField()
 
+def python_test(request):
+    return render(request, 'app1/python_test.html')
+
 def bootstrap(request):
     return render(request, 'app1/bootstrap.html')
 
